@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LashLift Pro - Ficha Clínica Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuración segura de Tailwind
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        // Paleta principal: Rosa y Piedra
+                        rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 900: '#881337' },
+                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' },
+                    }
+                }
+            }
+        }
+        
+        // Manejo de errores global
+        window.onerror = function(msg, url, line) {
+            console.error("Error: " + msg + "\nurl: " + url + "\nline: " + line);
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        window.appConfig = {
+            // 🔑 1. PEGA TU API KEY DE GEMINI AQUÍ:
+            API_KEY: 'AIzaSyDvvCg1jOsj2g_2FZ3fXmZfWfTV_D85ECQ', 
+            
+            // 💬 2. PON TU NÚMERO DE WHATSAPP AQUÍ (Con código de país. Ej: 54911...)
+            WHATSAPP_NUMBER: '5493517453666' 
+        };
+    </script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-rose-200">
+
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-40 border-b border-stone-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-28 md:h-32 flex items-center justify-between">
+            
+            <div class="flex flex-col items-start group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                
+                <img src="logo.png" 
+                     alt="LashLift.Pro Lifting de Pestañas Logo" 
+                     class="w-40 h-auto drop-shadow-sm group-hover:scale-[1.02] transition-transform duration-300">
+                
+                <span class="text-[10px] font-medium text-stone-500 uppercase tracking-widest -mt-1.5 ml-1">
+                    Lifting de Pestañas
+                </span>
+            </div>
+            <button onclick="document.getElementById('formulario').scrollIntoView({behavior: 'smooth'})" 
+                    class="hidden md:block bg-rose-500 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-rose-600 transition-colors duration-300 shadow-lg shadow-rose-200/50">
+                Completar Ficha
+            </button>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-20 lg:pt-52 lg:pb-32 px-6 overflow-hidden bg-gradient-to-b from-white to-stone-50">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <div class="relative z-10 text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white text-stone-600 text-xs font-bold tracking-widest uppercase rounded-full mb-8 border border-stone-200 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                    Estética Clínica Especializada
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-serif mb-6 leading-[1.1] text-stone-900">
+                    Miradas que impactan, <br>
+                    <span class="italic text-rose-500 font-medium">salud que se cuida.</span>
+                </h1>
+                <p class="text-stone-500 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+                    Lifting de pestañas profesional con los más altos estándares de bioseguridad. Completa tu ficha médica digital para un diagnóstico personalizado.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button onclick="document.getElementById('formulario').scrollIntoView({behavior: 'smooth'})" class="bg-stone-900 text-white px-8 py-4 rounded-full font-medium hover:bg-stone-800 transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        Completar Ficha
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative lg:h-[600px] h-[400px] order-1 lg:order-2 mb-8 lg:mb-0">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-rose-100/50 rounded-full blur-3xl -z-10"></div>
+                
+                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl h-full border-8 border-white group">
+                    <img src="foto_portada.jpg" 
+                         alt="Profesional realizando tratamiento de lifting en pestañas" 
+                         class="w-full h-full object-cover object-center transform scale-105 group-hover:scale-100 transition duration-1000">
+                    
+                    <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-xl text-rose-500">
+                                <i class="ph ph-certificate"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-rose-500 uppercase font-bold tracking-wider">Profesional Certificada</p>
+                                <p class="text-stone-900 font-serif font-bold text-lg">Técnica Lash Lift</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="formulario" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-12">
+            <span class="text-rose-500 font-bold tracking-widest text-xs uppercase mb-2 block">Protocolo</span>
+            <h2 class="text-4xl lg:text-5xl font-serif text-stone-900">Ficha de Salud</h2>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-stone-200 border border-stone-100 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-0">
+            
+            <div class="relative h-48 lg:h-auto lg:col-span-4 bg-rose-50 group overflow-hidden order-1"> 
+                <img src="ojo.png" 
+                     alt="Primer plano de ojo con pestañas arqueadas" 
+                     class="absolute inset-0 w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-stone-900/10"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white bg-gradient-to-t from-stone-900/60 to-transparent">
+                    <p class="font-serif italic text-xl opacity-90">"Resultados naturales y duraderos"</p>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 lg:col-span-8 relative flex flex-col justify-center order-2">
+                
+                <form id="anamnesisForm" class="space-y-8 relative z-10">
+                    
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-stone-800 mb-4 flex items-center gap-2 border-b border-stone-100 pb-2">
+                            <span class="text-rose-500">1.</span> Información del Cliente
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="group md:col-span-2">
+                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Nombre Completo</label>
+                                <input type="text" name="fullName" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                            </div>
+                            <div class="group">
+                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">DNI</label>
+                                <input type="text" name="dni" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                            </div>
+                            <div class="group">
+                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Edad / Fecha Nac.</label>
+                                <input type="text" name="dob" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                            </div>
+                            <div class="group md:col-span-2">
+                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Teléfono / WhatsApp</label>
+                                <input type="text" name="contact" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                            </div>
+                            
+                            <div class="md:col-span-2 mt-2 bg-rose-50/50 p-4 rounded-lg border border-rose-100">
+                                <p class="text-xs font-bold text-rose-500 uppercase mb-2">Contacto de Emergencia</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <input type="text" name="emergencyName" placeholder="Nombre" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
+                                    <input type="text" name="emergencyPhone" placeholder="Teléfono" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
+                                    <input type="text" name="emergencyRelation" placeholder="Relación" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-stone-800 mb-4 flex items-center gap-2 border-b border-stone-100 pb-2">
+                            <span class="text-rose-500">2.</span> Información Médica
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasChronicDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Enfermedad crónica?</span>
+                                        <p class="text-[10px] text-stone-400">(Diabetes, hipertensión)</p>
+                                        <input type="text" name="chronicDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="takesMeds" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Toma medicamentos?</span>
+                                        <input type="text" name="medsDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasAllergies" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">Alergias</span>
+                                        <p class="text-[10px] text-stone-400">(Medicamentos, alimentos, cosméticos)</p>
+                                        <input type="text" name="allergyDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasPreviousReactions" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Reacciones alérgicas previas?</span>
+                                        <input type="text" name="reactionDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasSkinDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Enfermedad de la piel?</span>
+                                        <p class="text-[10px] text-stone-400">(Acné, rosácea, dermatitis)</p>
+                                        <input type="text" name="skinDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasEyeDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Enfermedades oculares?</span>
+                                        <p class="text-[10px] text-stone-400">(Glaucoma, conjuntivitis, ojo seco)</p>
+                                        <input type="text" name="eyeDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                                <label class="flex items-center gap-3 cursor-pointer w-full">
+                                    <input type="checkbox" name="isPregnant" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <span class="text-sm font-medium text-stone-700">¿Embarazo o lactancia?</span>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                                <label class="flex items-center gap-3 cursor-pointer w-full">
+                                    <input type="checkbox" name="hasContacts" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium text-stone-700">¿Lentes de contacto?</span>
+                                        <span class="text-[10px] text-stone-400">O sensibilidad ocular</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                                <label class="flex items-center gap-3 cursor-pointer w-full">
+                                    <input type="checkbox" name="smokes" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <span class="text-sm font-medium text-stone-700">¿Fuma?</span>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                                <label class="flex items-center gap-3 cursor-pointer w-full">
+                                    <input type="checkbox" name="drinksAlcohol" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <span class="text-sm font-medium text-stone-700">¿Consume alcohol?</span>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                                <label class="flex items-center gap-3 cursor-pointer w-full">
+                                    <input type="checkbox" name="hasDiet" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <span class="text-sm font-medium text-stone-700">¿Sigue alguna dieta?</span>
+                                </label>
+                            </div>
+
+                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="hasAutoimmune" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <div class="w-full">
+                                        <span class="text-sm font-medium text-stone-700">¿Enf. Autoinmunes?</span>
+                                        <p class="text-[10px] text-stone-400">(Lupus, psoriasis, VIH)</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50 p-6 rounded-xl border border-rose-100">
+                        <h3 class="font-serif text-lg font-bold text-rose-900 mb-2">Consentimiento Informado</h3>
+                        <p class="text-xs text-stone-600 mb-4 text-justify leading-relaxed">
+                            Declaro que he sido informada/o sobre el procedimiento, cuidados y posibles riesgos del tratamiento de permanente de pestañas (Lash Lifting) con instrucciones escritas y orales. Acepto voluntariamente realizarme dicho tratamiento bajo mi responsabilidad y confirmo que los datos proporcionados son reales.
+                        </p>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" name="consent" required class="w-5 h-5 text-rose-600 rounded border-rose-300 focus:ring-rose-500">
+                            <span class="text-sm font-bold text-rose-800">Acepto y Firmo Digitalmente</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full bg-stone-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-stone-800 transition-all shadow-xl shadow-stone-200 hover:shadow-2xl flex items-center justify-center gap-2 group">
+                        <span>Obtener Diagnóstico Personalizado</span>
+                        <i class="ph-bold ph-magic-wand group-hover:rotate-12 transition-transform"></i>
+                    </button>
+                    
+                    <p class="text-center text-xs text-stone-400 mt-4">
+                        Analizado por Inteligencia Artificial para tu seguridad.
+                    </p>
+                </form>
+
+                <div id="results" class="hidden mt-8 bg-stone-50 rounded-2xl p-6 border border-stone-200 animate-fade-in">
+                    <h3 class="text-2xl font-serif text-stone-900 mb-4 flex items-center gap-2">
+                        <i class="ph-fill ph-sparkle text-rose-500"></i> Evaluación Profesional
+                    </h3>
+                    <div id="aiAnalysisContent" class="prose prose-stone prose-sm max-w-none text-stone-600 mb-6"></div>
+                    
+                    <button id="whatsappBtn" class="w-full bg-[#25D366] text-white py-3.5 rounded-xl font-bold hover:bg-[#128C7E] transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-whatsapp-logo text-xl"></i>
+                        Enviar Ficha a Especialista
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12 border-b border-stone-800 pb-12">
+            <div>
+                <div class="flex items-center gap-4 mb-6 opacity-90">
+                     <img src="logo.png" 
+                          alt="LashLift.Pro Logo" 
+                          class="w-48 h-auto opacity-90">
+                </div>
+                <p class="text-stone-400 text-sm">Realzamos tu mirada cuidando la salud de tus pestañas con productos de primera calidad.</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-6">Horarios</h4>
+                <ul class="space-y-3 text-stone-400 text-sm">
+                    <li>Lunes a Viernes: 9:00 - 19:00</li>
+                    <li>Sábados: 10:00 - 14:00</li>
+                    <li>Domingos: Cerrado</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-6">Contacto</h4>
+                <ul class="space-y-3 text-stone-400 text-sm">
+                    <li>📍 Centro de Estética Integral</li>
+                    <li>📱 +54 351xxxxx</li>
+                    <li>✉️ contacto@lashlift.pro</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-stone-600 text-xs">
+            &copy; 2024 LashLift Pro. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script type="module">
+        import { GoogleGenAI } from "https://esm.sh/@google/genai";
+
+        // Referencias DOM
+        const form = document.getElementById('anamnesisForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultsDiv = document.getElementById('results');
+        const aiContentDiv = document.getElementById('aiAnalysisContent');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+
+        let lastAnalysisText = "";
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // 1. UI Loading
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="ph-bold ph-spinner animate-spin text-xl"></i> Evaluando perfil...';
+            submitBtn.classList.add('opacity-75');
+
+            // 2. Recopilar Datos (NUEVOS CAMPOS)
+            const formData = new FormData(form);
+            const data = {
+                nombre: formData.get('fullName'),
+                dni: formData.get('dni'),
+                edad: formData.get('dob'),
+                contacto: formData.get('contact'),
+                emergencia: `${formData.get('emergencyName')} (${formData.get('emergencyRelation')}) - ${formData.get('emergencyPhone')}`,
+                
+                // Médicos
+                cronicas: formData.get('hasChronicDisease') ? `SÍ (${formData.get('chronicDiseaseDetails')})` : 'No',
+                medicamentos: formData.get('takesMeds') ? `SÍ (${formData.get('medsDetails')})` : 'No',
+                alergias: formData.get('hasAllergies') ? `SÍ (${formData.get('allergyDetails')})` : 'No',
+                reacciones: formData.get('hasPreviousReactions') ? `SÍ (${formData.get('reactionDetails')})` : 'No',
+                piel: formData.get('hasSkinDisease') ? `SÍ (${formData.get('skinDiseaseDetails')})` : 'No',
+                ojos: formData.get('hasEyeDisease') ? `SÍ (${formData.get('eyeDiseaseDetails')})` : 'No',
+                embarazo: formData.get('isPregnant') ? 'SÍ' : 'No',
+                lentes: formData.get('hasContacts') ? 'SÍ' : 'No',
+                fuma: formData.get('smokes') ? 'SÍ' : 'No',
+                alcohol: formData.get('drinksAlcohol') ? 'SÍ' : 'No',
+                dieta: formData.get('hasDiet') ? 'SÍ' : 'No',
+                autoinmune: formData.get('hasAutoimmune') ? 'SÍ' : 'No',
+                consentimiento: formData.get('consent') ? 'Firmado' : 'No firmado'
+            };
+
+            try {
+                // 3. Llamar a Gemini
+                if (!window.appConfig.API_KEY || window.appConfig.API_KEY === '') {
+                    throw new Error("⚠️ ERROR: Falta la API Key en el código. ¡Insértala en la línea 56!");
+                }
+
+                const genAI = new GoogleGenAI({ apiKey: window.appConfig.API_KEY });
+                
+                const prompt = `
+                    Actúa como una especialista experta en estética y lifting de pestañas.
+                    Analiza la siguiente ficha médica de una clienta para determinar si es apta para el procedimiento.
+
+                    DATOS CLIENTE:
+                    - Nombre: ${data.nombre} (${data.edad})
+                    - Embarazo/Lactancia: ${data.embarazo}
+                    - Enfermedades Oculares: ${data.ojos}
+                    - Alergias: ${data.alergias}
+                    - Piel/Dermatitis: ${data.piel}
+                    - Reacciones Previas: ${data.reacciones}
+                    - Enfermedades Crónicas: ${data.cronicas}
+                    - Medicamentos: ${data.medicamentos}
+                    - Lentes contacto: ${data.lentes}
+                    - Autoinmunes: ${data.autoinmune}
+
+                    TAREA:
+                    1. Indica si es APTA, NO APTA o APTA CON PRECAUCIÓN.
+                    2. Lista las contraindicaciones específicas encontradas (si las hay).
+                    3. Da recomendaciones breves para la profesional antes de empezar.
+                    
+                    Responde en formato HTML simple (usando <strong>, <ul>, <li>, <p>) con tono profesional y cálido.
+                `;
+
+                const response = await genAI.models.generateContent({
+                    model: 'gemini-2.5-flash',
+                    contents: prompt,
+                });
+
+                const aiText = response.text;
+                // Esto es crucial: Limpia el texto HTML para que sea solo texto plano en WhatsApp.
+                lastAnalysisText = aiText.replace(/<[^>]*>?/gm, ''); 
+
+                // 4. Mostrar Resultados
+                aiContentDiv.innerHTML = aiText;
+                resultsDiv.classList.remove('hidden');
+                
+                // Scroll a resultados
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (error) {
+                console.error(error);
+                let errorMessage = "Hubo un error al conectar con el asistente. Por favor verifica tu conexión o la API Key.";
+                if (error.message.includes("API Key")) {
+                     errorMessage = error.message;
+                }
+                alert(errorMessage);
+
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.classList.remove('opacity-75');
+            }
+
+            // 5. Configurar Botón WhatsApp
+            whatsappBtn.onclick = () => {
+                const phone = window.appConfig.WHATSAPP_NUMBER;
+                 // Verificación simple: solo chequea si el campo está vacío.
+                 if (!phone || phone === '') {
+                    alert("⚠️ Configura el número de WhatsApp en la línea 59 del código.");
+                    return;
+                }
+                
+                const message = `
+*NUEVA FICHA LASH LIFT* 👁️✨
+------------------
+*Cliente:* ${data.nombre}
+*DNI:* ${data.dni}
+*Edad:* ${data.edad}
+*Contacto:* ${data.contacto}
+*Emergencia:* ${data.emergencia}
+
+*HISTORIAL MÉDICO:*
+• Crónicas: ${data.cronicas}
+• Alergias: ${data.alergias}
+• Ojos: ${data.ojos}
+• Piel: ${data.piel}
+• Embarazo: ${data.embarazo}
+• Lentes: ${data.lentes}
+• Medicamentos: ${data.medicamentos}
+• Reacciones Previas: ${data.reacciones}
+• Autoinmunes: ${data.autoinmune}
+
+*EVALUACIÓN IA:*
+${lastAnalysisText}
+
+*Consentimiento:* ${data.consentimiento}
+                `.trim();
+                
+                const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            };
+        });
+    </script>
+</body>
+</html>
