@@ -6,7 +6,7 @@
     <title>LashLift Pro - Ficha Clínica Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuración segura de Tailwind
+        // Configuración de Tailwind con la paleta de la maqueta
         tailwind.config = {
             theme: {
                 extend: {
@@ -15,9 +15,19 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        // Paleta principal: Rosa y Piedra
-                        rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 900: '#881337' },
-                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' },
+                        // PALETA FINAL: CIRUELA/MORADO (Saturado como la maqueta)
+                        'plum': { 
+                            50: '#FBF5FB',    // Fondo muy claro (para secciones)
+                            100: '#F8EBF1',   // Fondo de acento y bordes claros (#F8EBF1)
+                            500: '#C2659B',   // Acento Medio (Píldoras)
+                            700: '#783873',   // Acento Fuerte (Botones principales, Borde Formulario)
+                            900: '#4A1D47',   // Fondo Footer (Morado Oscuro)
+                        },
+                        'neutral': {
+                            50: '#ffffff',    // Fondo principal (Blanco)
+                            100: '#f5f5f5',   // Gris muy claro (para secciones)
+                            900: '#333333',   // Texto oscuro
+                        }
                     }
                 }
             }
@@ -28,7 +38,7 @@
             console.error("Error: " + msg + "\nurl: " + url + "\nline: " + line);
         };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700,1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <script>
@@ -36,71 +46,74 @@
             // 🔑 1. PEGA TU API KEY DE GEMINI AQUÍ:
             API_KEY: 'AIzaSyDvvCg1jOsj2g_2FZ3fXmZfWfTV_D85ECQ', 
             
-            // 💬 2. PON TU NÚMERO DE WHATSAPP AQUÍ (Con código de país. Ej: 54911...)
+            // 💬 2. PON TU NÚMERO DE WHATSAPP AQUÍ (Formato: 549351xxxxxxx)
             WHATSAPP_NUMBER: '5493517453666' 
         };
     </script>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-rose-200">
+<body class="bg-neutral-50 text-neutral-900 font-sans antialiased selection:bg-plum-100">
 
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-40 border-b border-stone-100 shadow-sm transition-all duration-300">
+    <nav class="fixed top-0 w-full bg-neutral-50/95 backdrop-blur-md z-40 border-b border-neutral-100 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-28 md:h-32 flex items-center justify-between">
             
             <div class="flex flex-col items-start group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 
                 <img src="logo.png" 
-                     alt="LashLift.Pro Lifting de Pestañas Logo" 
+                     alt="LashLift.Pro Logo" 
                      class="w-40 h-auto drop-shadow-sm group-hover:scale-[1.02] transition-transform duration-300">
                 
-                <span class="text-[10px] font-medium text-stone-500 uppercase tracking-widest -mt-1.5 ml-1">
+                <span class="text-[10px] font-medium text-neutral-500 uppercase tracking-widest -mt-1.5 ml-1">
                     Lifting de Pestañas
                 </span>
             </div>
             <button onclick="document.getElementById('formulario').scrollIntoView({behavior: 'smooth'})" 
-                    class="hidden md:block bg-rose-500 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-rose-600 transition-colors duration-300 shadow-lg shadow-rose-200/50">
+                    class="hidden md:block bg-plum-700 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-plum-900 transition-colors duration-300 shadow-lg shadow-plum-200/50">
                 Turno
             </button>
         </div>
     </nav>
 
-    <header class="pt-36 pb-20 lg:pt-52 lg:pb-32 px-6 overflow-hidden bg-gradient-to-b from-white to-stone-50">
+    <header class="pt-36 pb-20 lg:pt-52 lg:pb-32 px-6 overflow-hidden bg-neutral-50">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             <div class="relative z-10 text-center lg:text-left order-2 lg:order-1">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white text-stone-600 text-xs font-bold tracking-widest uppercase rounded-full mb-8 border border-stone-200 shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-plum-50 text-plum-700 text-xs font-bold tracking-widest uppercase rounded-full mb-8 border border-plum-100 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-plum-500"></span>
                     Estética Clínica Especializada
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-serif mb-6 leading-[1.1] text-stone-900">
+                
+                <h1 class="text-5xl lg:text-7xl font-serif mb-6 leading-[1.1] text-neutral-900">
                     Miradas que impactan, <br>
-                    <span class="italic text-rose-500 font-medium">salud que se cuida.</span>
+                    <span class="italic text-plum-500 font-medium">salud que se cuida.</span>
                 </h1>
-                <p class="text-stone-500 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
-                    Lifting de pestañas profesional con los más altos estándares de bioseguridad. Completa tu ficha médica digital para un diagnóstico personalizado.
+                
+                <p class="text-neutral-700 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+                    Tu ficha clínica profesional para garantizar resultados perfectos.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button onclick="document.getElementById('formulario').scrollIntoView({behavior: 'smooth'})" class="bg-stone-900 text-white px-8 py-4 rounded-full font-medium hover:bg-stone-800 transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                        Turno
+                    <button onclick="document.getElementById('formulario').scrollIntoView({behavior: 'smooth'})" class="bg-plum-700 text-white px-8 py-4 rounded-full font-medium hover:bg-plum-900 transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        Formulario
                     </button>
                 </div>
             </div>
 
             <div class="relative lg:h-[600px] h-[400px] order-1 lg:order-2 mb-8 lg:mb-0">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-rose-100/50 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-plum-100/50 rounded-full blur-3xl -z-10"></div>
                 
                 <div class="relative rounded-[3rem] overflow-hidden shadow-2xl h-full border-8 border-white group">
                     <img src="foto_portada.jpg" 
                          alt="Profesional realizando tratamiento de lifting en pestañas" 
                          class="w-full h-full object-cover object-center transform scale-105 group-hover:scale-100 transition duration-1000">
                     
-                    <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/50">
+                    <div class="absolute bottom-8 left-8 right-8 bg-neutral-50/95 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-neutral-100/50">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-xl text-rose-500">
+                            <div class="w-12 h-12 bg-plum-50 rounded-full flex items-center justify-center text-xl text-plum-500">
                                 <i class="ph ph-certificate"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-rose-500 uppercase font-bold tracking-wider">Profesional Certificada</p>
-                                <p class="text-stone-900 font-serif font-bold text-lg">Técnica Lash Lift</p>
+                                <p class="text-xs text-plum-500 uppercase font-bold tracking-wider">Staff Certificado</p>
+                                <p class="text-neutral-900 font-serif font-bold text-lg">Técnica Lash Lift</p>
                             </div>
                         </div>
                     </div>
@@ -111,19 +124,19 @@
 
     <section id="formulario" class="max-w-7xl mx-auto px-6 py-24">
         <div class="text-center mb-12">
-            <span class="text-rose-500 font-bold tracking-widest text-xs uppercase mb-2 block">Protocolo</span>
-            <h2 class="text-4xl lg:text-5xl font-serif text-stone-900">Ficha de Salud</h2>
+            
+            <h2 class="text-4xl lg:text-5xl font-serif text-neutral-900">Ficha Clínica Digital</h2>
         </div>
 
-        <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-stone-200 border border-stone-100 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-0">
+        <div class="bg-neutral-50 rounded-[2.5rem] shadow-2xl shadow-plum-100 border border-plum-700 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-0">
             
-            <div class="relative aspect-square lg:h-auto lg:col-span-4 bg-rose-50 group overflow-hidden order-1"> 
+            <div class="relative aspect-square lg:h-auto lg:col-span-4 bg-plum-50 group overflow-hidden order-1"> 
                 <img src="ojo.png" 
                      alt="Primer plano de ojo con pestañas arqueadas" 
                      class="absolute inset-0 w-full h-full object-cover object-center">
-                <div class="absolute inset-0 bg-stone-900/10"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-8 text-white bg-gradient-to-t from-stone-900/60 to-transparent">
-                    <p class="font-serif italic text-xl opacity-90">"Resultados naturales y duraderos"</p>
+                <div class="absolute inset-0 bg-neutral-900/10"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white bg-gradient-to-t from-neutral-900/60 to-transparent">
+                    <p class="font-serif italic text-xl opacity-90">"Tu seguridad es nuestra prioridad"</p>
                 </div>
             </div>
 
@@ -132,152 +145,152 @@
                 <form id="anamnesisForm" class="space-y-8 relative z-10">
                     
                     <div>
-                        <h3 class="font-serif text-xl font-bold text-stone-800 mb-4 flex items-center gap-2 border-b border-stone-100 pb-2">
-                            <span class="text-rose-500">1.</span> Información del Cliente
+                        <h3 class="font-serif text-xl font-bold text-neutral-900 mb-4 flex items-center gap-2 border-b border-neutral-100 pb-2">
+                            <span class="text-plum-500">1.</span> Información del Cliente
                         </h3>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="group md:col-span-2">
-                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Nombre Completo</label>
-                                <input type="text" name="fullName" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                                <label class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Nombre Completo</label>
+                                <input type="text" name="fullName" required class="w-full bg-plum-100 border border-neutral-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-plum-500 outline-none">
                             </div>
                             <div class="group">
-                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">DNI</label>
-                                <input type="text" name="dni" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                                <label class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">DNI</label>
+                                <input type="text" name="dni" required class="w-full bg-plum-100 border border-neutral-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-plum-500 outline-none">
                             </div>
                             <div class="group">
-                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Edad / Fecha Nac.</label>
-                                <input type="text" name="dob" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                                <label class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Edad / Fecha Nac.</label>
+                                <input type="text" name="dob" required class="w-full bg-plum-100 border border-neutral-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-plum-500 outline-none">
                             </div>
                             <div class="group md:col-span-2">
-                                <label class="text-[11px] font-bold text-stone-400 uppercase tracking-wider">Teléfono / WhatsApp</label>
-                                <input type="text" name="contact" required class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500 outline-none">
+                                <label class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Teléfono / WhatsApp</label>
+                                <input type="text" name="contact" required class="w-full bg-plum-100 border border-neutral-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-plum-500 outline-none">
                             </div>
                             
-                            <div class="md:col-span-2 mt-2 bg-rose-50/50 p-4 rounded-lg border border-rose-100">
-                                <p class="text-xs font-bold text-rose-500 uppercase mb-2">Contacto de Emergencia</p>
+                            <div class="md:col-span-2 mt-2 bg-plum-50/50 p-4 rounded-lg border border-plum-100">
+                                <p class="text-xs font-bold text-plum-700 uppercase mb-2">Contacto de Emergencia</p>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                    <input type="text" name="emergencyName" placeholder="Nombre" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
-                                    <input type="text" name="emergencyPhone" placeholder="Teléfono" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
-                                    <input type="text" name="emergencyRelation" placeholder="Relación" class="w-full bg-white border border-rose-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-rose-500 outline-none">
+                                    <input type="text" name="emergencyName" placeholder="Nombre" class="w-full bg-white border border-plum-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-plum-500 outline-none">
+                                    <input type="text" name="emergencyPhone" placeholder="Teléfono" class="w-full bg-white border border-plum-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-plum-500 outline-none">
+                                    <input type="text" name="emergencyRelation" placeholder="Relación" class="w-full bg-white border border-plum-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-plum-500 outline-none">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <h3 class="font-serif text-xl font-bold text-stone-800 mb-4 flex items-center gap-2 border-b border-stone-100 pb-2">
-                            <span class="text-rose-500">2.</span> Información Médica
+                        <h3 class="font-serif text-xl font-bold text-neutral-900 mb-4 flex items-center gap-2 border-b border-neutral-100 pb-2">
+                            <span class="text-plum-500">2.</span> Información Médica
                         </h3>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasChronicDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasChronicDisease" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Enfermedad crónica?</span>
-                                        <p class="text-[10px] text-stone-400">(Diabetes, hipertensión)</p>
-                                        <input type="text" name="chronicDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">¿Enfermedad crónica?</span>
+                                        <p class="text-[10px] text-neutral-400">(Diabetes, hipertensión)</p>
+                                        <input type="text" name="chronicDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="takesMeds" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="takesMeds" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Toma medicamentos?</span>
-                                        <input type="text" name="medsDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">¿Toma medicamentos?</span>
+                                        <input type="text" name="medsDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasAllergies" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasAllergies" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">Alergias</span>
-                                        <p class="text-[10px] text-stone-400">(Medicamentos, alimentos, cosméticos)</p>
-                                        <input type="text" name="allergyDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">Alergias</span>
+                                        <p class="text-[10px] text-neutral-400">(Medicamentos, alimentos, cosméticos)</p>
+                                        <input type="text" name="allergyDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasPreviousReactions" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasPreviousReactions" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Reacciones alérgicas previas?</span>
-                                        <input type="text" name="reactionDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">¿Reacciones alérgicas previas?</span>
+                                        <input type="text" name="reactionDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasSkinDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasSkinDisease" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Enfermedad de la piel?</span>
-                                        <p class="text-[10px] text-stone-400">(Acné, rosácea, dermatitis)</p>
-                                        <input type="text" name="skinDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">¿Enfermedad de la piel?</span>
+                                        <p class="text-[10px] text-neutral-400">(Acné, rosácea, dermatitis)</p>
+                                        <input type="text" name="skinDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasEyeDisease" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasEyeDisease" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Enfermedades oculares?</span>
-                                        <p class="text-[10px] text-stone-400">(Glaucoma, conjuntivitis, ojo seco)</p>
-                                        <input type="text" name="eyeDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-stone-200 bg-transparent py-1 focus:border-rose-500 outline-none">
+                                        <span class="text-sm font-medium text-neutral-700">¿Enfermedades oculares?</span>
+                                        <p class="text-[10px] text-neutral-400">(Glaucoma, conjuntivitis, ojo seco)</p>
+                                        <input type="text" name="eyeDiseaseDetails" placeholder="Especifique..." class="mt-2 w-full text-xs border-b border-neutral-300 bg-transparent py-1 focus:border-plum-500 outline-none">
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700 flex items-center">
                                 <label class="flex items-center gap-3 cursor-pointer w-full">
-                                    <input type="checkbox" name="isPregnant" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
-                                    <span class="text-sm font-medium text-stone-700">¿Embarazo o lactancia?</span>
+                                    <input type="checkbox" name="isPregnant" class="w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
+                                    <span class="text-sm font-medium text-neutral-700">¿Embarazo o lactancia?</span>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700 flex items-center">
                                 <label class="flex items-center gap-3 cursor-pointer w-full">
-                                    <input type="checkbox" name="hasContacts" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasContacts" class="w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-medium text-stone-700">¿Lentes de contacto?</span>
-                                        <span class="text-[10px] text-stone-400">O sensibilidad ocular</span>
+                                        <span class="text-sm font-medium text-neutral-700">¿Lentes de contacto?</span>
+                                        <span class="text-[10px] text-neutral-400">O sensibilidad ocular</span>
                                     </div>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700 flex items-center">
                                 <label class="flex items-center gap-3 cursor-pointer w-full">
-                                    <input type="checkbox" name="smokes" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
-                                    <span class="text-sm font-medium text-stone-700">¿Fuma?</span>
+                                    <input type="checkbox" name="smokes" class="w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
+                                    <span class="text-sm font-medium text-neutral-700">¿Fuma?</span>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700 flex items-center">
                                 <label class="flex items-center gap-3 cursor-pointer w-full">
-                                    <input type="checkbox" name="drinksAlcohol" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
-                                    <span class="text-sm font-medium text-stone-700">¿Consume alcohol?</span>
+                                    <input type="checkbox" name="drinksAlcohol" class="w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
+                                    <span class="text-sm font-medium text-neutral-700">¿Consume alcohol?</span>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100 flex items-center">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700 flex items-center">
                                 <label class="flex items-center gap-3 cursor-pointer w-full">
-                                    <input type="checkbox" name="hasDiet" class="w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
-                                    <span class="text-sm font-medium text-stone-700">¿Sigue alguna dieta?</span>
+                                    <input type="checkbox" name="hasDiet" class="w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
+                                    <span class="text-sm font-medium text-neutral-700">¿Sigue alguna dieta?</span>
                                 </label>
                             </div>
 
-                            <div class="bg-stone-50 p-3 rounded-lg border border-stone-100">
+                            <div class="bg-plum-100 p-3 rounded-lg border border-plum-700">
                                 <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" name="hasAutoimmune" class="mt-1 w-4 h-4 text-rose-500 rounded border-gray-300 focus:ring-rose-500">
+                                    <input type="checkbox" name="hasAutoimmune" class="mt-1 w-4 h-4 text-plum-500 rounded border-gray-300 focus:ring-plum-500">
                                     <div class="w-full">
-                                        <span class="text-sm font-medium text-stone-700">¿Enf. Autoinmunes?</span>
-                                        <p class="text-[10px] text-stone-400">(Lupus, psoriasis, VIH)</p>
+                                        <span class="text-sm font-medium text-neutral-700">¿Enf. Autoinmunes?</span>
+                                        <p class="text-[10px] text-neutral-400">(Lupus, psoriasis, VIH)</p>
                                     </div>
                                 </label>
                             </div>
@@ -285,32 +298,32 @@
                         </div>
                     </div>
 
-                    <div class="bg-rose-50 p-6 rounded-xl border border-rose-100">
-                        <h3 class="font-serif text-lg font-bold text-rose-900 mb-2">Consentimiento Informado</h3>
-                        <p class="text-xs text-stone-600 mb-4 text-justify leading-relaxed">
+                    <div class="bg-plum-100 p-6 rounded-xl border border-plum-200">
+                        <h3 class="font-serif text-lg font-bold text-plum-700 mb-2">Consentimiento Informado</h3>
+                        <p class="text-xs text-neutral-700 mb-4 text-justify leading-relaxed">
                             Declaro que he sido informada/o sobre el procedimiento, cuidados y posibles riesgos del tratamiento de permanente de pestañas (Lash Lifting) con instrucciones escritas y orales. Acepto voluntariamente realizarme dicho tratamiento bajo mi responsabilidad y confirmo que los datos proporcionados son reales.
                         </p>
                         <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" name="consent" required class="w-5 h-5 text-rose-600 rounded border-rose-300 focus:ring-rose-500">
-                            <span class="text-sm font-bold text-rose-800">Acepto y Firmo Digitalmente</span>
+                            <input type="checkbox" name="consent" required class="w-5 h-5 text-plum-700 rounded border-plum-300 focus:ring-plum-500">
+                            <span class="text-sm font-bold text-plum-700">Acepto y Firmo Digitalmente</span>
                         </label>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="w-full bg-stone-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-stone-800 transition-all shadow-xl shadow-stone-200 hover:shadow-2xl flex items-center justify-center gap-2 group">
+                    <button type="submit" id="submitBtn" class="w-full bg-plum-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-plum-900 transition-all shadow-xl shadow-plum-200 hover:shadow-2xl flex items-center justify-center gap-2 group">
                         <span>Obtener Diagnóstico Personalizado</span>
                         <i class="ph-bold ph-magic-wand group-hover:rotate-12 transition-transform"></i>
                     </button>
                     
-                    <p class="text-center text-xs text-stone-400 mt-4">
+                    <p class="text-center text-xs text-neutral-400 mt-4">
                         Analizado por Inteligencia Artificial para tu seguridad.
                     </p>
                 </form>
 
-                <div id="results" class="hidden mt-8 bg-stone-50 rounded-2xl p-6 border border-stone-200 animate-fade-in">
-                    <h3 class="text-2xl font-serif text-stone-900 mb-4 flex items-center gap-2">
-                        <i class="ph-fill ph-sparkle text-rose-500"></i> Evaluación Profesional
+                <div id="results" class="hidden mt-8 bg-neutral-100 rounded-2xl p-6 border border-neutral-200 animate-fade-in">
+                    <h3 class="text-2xl font-serif text-neutral-900 mb-4 flex items-center gap-2">
+                        <i class="ph-fill ph-sparkle text-plum-500"></i> Evaluación Profesional
                     </h3>
-                    <div id="aiAnalysisContent" class="prose prose-stone prose-sm max-w-none text-stone-600 mb-6"></div>
+                    <div id="aiAnalysisContent" class="prose prose-neutral-700 prose-sm max-w-none text-neutral-700 mb-6"></div>
                     
                     <button id="whatsappBtn" class="w-full bg-[#25D366] text-white py-3.5 rounded-xl font-bold hover:bg-[#128C7E] transition shadow-lg flex items-center justify-center gap-2">
                         <i class="ph-bold ph-whatsapp-logo text-xl"></i>
@@ -321,19 +334,19 @@
         </div>
     </section>
 
-    <footer class="bg-stone-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12 border-b border-stone-800 pb-12">
+    <footer class="bg-plum-700 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 mb-12 border-b border-plum-900 pb-12">
             <div>
                 <div class="flex items-center gap-4 mb-6 opacity-90">
                      <img src="logo.png" 
                           alt="LashLift.Pro Logo" 
                           class="w-48 h-auto opacity-90">
                 </div>
-                <p class="text-stone-400 text-sm">Realzamos tu mirada cuidando la salud de tus pestañas con productos de primera calidad.</p>
+                <p class="text-plum-100 text-sm">Realzamos tu mirada cuidando la salud de tus pestañas con productos de primera calidad.</p>
             </div>
             <div>
                 <h4 class="font-serif text-xl mb-6">Horarios</h4>
-                <ul class="space-y-3 text-stone-400 text-sm">
+                <ul class="space-y-3 text-plum-100 text-sm">
                     <li>Lunes a Viernes: 9:00 - 19:00</li>
                     <li>Sábados: 10:00 - 14:00</li>
                     <li>Domingos: Cerrado</li>
@@ -341,15 +354,15 @@
             </div>
             <div>
                 <h4 class="font-serif text-xl mb-6">Contacto</h4>
-                <ul class="space-y-3 text-stone-400 text-sm">
+                <ul class="space-y-3 text-plum-100 text-sm">
                     <li>📍 Centro de Estética Integral</li>
                     <li>📱 +54 351xxxxx</li>
                     <li>✉️ contacto@lashlift.pro</li>
                 </ul>
             </div>
         </div>
-        <div class="text-center text-stone-600 text-xs">
-            &copy; 2024 LashLift Pro. Todos los derechos reservados.
+        <div class="text-center text-plum-500 text-xs">
+            &copy; 2025 LashLift Pro. Todos los derechos reservados.
         </div>
     </footer>
 
